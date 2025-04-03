@@ -1,0 +1,220 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightblue;
+    margin: 0;
+    padding: 0;
+    color: black;
+    text-align: center;
+    line-height: 1.6;
+    letter-spacing: 0.5px;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background: #004080;
+    color: white;
+}
+
+header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+#camera-btn {
+    background: black;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#camera-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Layout */
+.container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .dashboard, .camera-container {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+
+    #app {
+        width: 90%;
+    }
+}
+
+/* Dashboard */
+.dashboard {
+    width: 25%;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dashboard img {
+    width: 80%;
+    margin: 10px 0;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+/* Camera Section */
+.camera-container {
+    width: 50%;
+    text-align: center;
+}
+
+video {
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+#capture-btn {
+    background: black;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+#capture-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Chat Popup */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+#app {
+    width: 300px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    color: black;
+}
+
+.chat-box {
+    height: 250px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background: #e6f7ff;
+    scroll-behavior: smooth;
+}
+
+/* Message Bubbles */
+.message {
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    width: fit-content;
+    max-width: 80%;
+}
+
+.message.user {
+    background: #007bff;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.message.bot {
+    background: #e6f7ff;
+    color: black;
+    align-self: flex-start;
+    margin-right: auto;
+}
+
+.toggle-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.toggle-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+/* Prediction Result */
+#prediction-result {
+    font-size: 18px;
+    font-weight: bold;
+    color: #218838;
+    background: #e6ffe6;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Form Inputs */
+input {
+    width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+input:focus, button:focus {
+    outline: 3px solid #0056b3;
+}
+
+/* Buttons */
+.try-btn {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 5px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.try-btn:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
