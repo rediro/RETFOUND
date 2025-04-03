@@ -1,0 +1,22 @@
+--find-links https://download.pytorch.org/whl/torch_stable.html
+
+torch==2.2.0+cu121
+torchvision==0.17.0+cu121
+torchaudio==2.2.0
+python-multipart
+opencv-python
+pandas
+Pillow
+protobuf
+pycm
+pydicom
+scikit-image
+scikit-learn
+scipy
+tensorboard
+tensorboard-data-server
+tensorboard-plugin-wit
+timm
+tqdm
+fastapi uvicorn 
+streamlit  
