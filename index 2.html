@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RICAI - Medical Assistant</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Title -->
+    <header>
+        <h1>RICAI</h1>
+        <button id="camera-btn">Access Camera</button>
+    </header>
+
+    <div class="container">
+        <!-- Dashboard -->
+        <aside class="dashboard">
+            <h2>Dashboard</h2>
+
+            <!-- Image Upload Section -->
+            <h3>Upload an Image</h3>
+            <input type="file" id="imageUpload" accept="image/*">
+            <button id="upload-btn">Upload & Predict</button>
+            <p id="prediction-result"></p>
+
+            <img id="captured-image" style="display:none;" />
+            <button id="retake-btn" style="display:none;">Retake</button>
+            <button id="submit-btn" style="display:none;">Submit</button>
+        </aside>
+
+        <!-- Camera Section -->
+        <main class="camera-container">
+            <video id="video" autoplay></video>
+            <canvas id="canvas" style="display:none;"></canvas>
+            <button id="capture-btn">Capture & Predict</button>
+        </main>
+
+        <!-- Chat Popup -->
+        <div class="chat-container">
+            <button class="toggle-btn" id="toggle-btn">Chat with us</button>
+            <div id="app">
+                <h2>Health Chatbot</h2>
+                <div class="chat-box">
+                    <div v-for="message in messages" :class="['message', message.sender]" :key="message.id">
+                        {{ message.text }}
+                    </div>
+                    <p id="chat-prediction"></p>
+                </div>
+                <input v-model="userInput" @keyup.enter="sendMessage" placeholder="Ask about health issues..." />
+                <button @click="sendMessage">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    document.getElementById("upload-btn").addEventListener("click", async function() {
+        let formData = new FormData();
+        let fileInput = document.getElementById("imageUpload");
+
+        if (fileInput.files.length === 0) {
+            alert("Please select an image first.");
+            return;
+        }
+
+        formData.append("file", fileInput.files[0]);
+
+        let response = await fetch("http://127.0.0.1:8000/predict/", {
+            method: "POST",
+            body: formData
+        });
+
+        let result = await response.json();
+        let predictionText = `🎯 Predicted Category: ${result.category} (Confidence: ${(result.confidence * 100).toFixed(2)}%)`;
+
+        document.getElementById("prediction-result").innerText = predictionText;
+        document.getElementById("chat-prediction").innerText = predictionText;
+    });
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
